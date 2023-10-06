@@ -27,16 +27,19 @@ func ShellExecute(verb, file, args, dir string, showCmd int) error {
 		uintptr(unsafe.Pointer(dirPtr)),
 		uintptr(showCmd),
 	)
+
 	if err != windows.ERROR_SUCCESS {
 		return err
 	}
+
 	return nil
 }
 
 func main() {
 	// Print an image
-	imagePath := "C:\\path\\to\\your\\image.jpg"
-	err := ShellExecute("print", imagePath, "", "", 0)
+	//imagePath := "C:\\path\\to\\your\\image.jpg"
+	imagePath := ".\\R.jpg"
+	err := ShellExecute("print", imagePath, "", "", 1)
 	if err != nil {
 		log.Fatalf("Failed to print image: %v", err)
 	}
